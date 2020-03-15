@@ -1,0 +1,105 @@
+#include "pch.h"
+#include <iostream>
+
+using namespace std;
+
+#define SIZE 3
+
+//////////////////////////////////---STACK---///////////////////////////////////////
+class STACK {
+	private:
+		int stackArray[SIZE];
+		int top = -1;
+	public:
+		bool isEmpty();
+		void push(int value);
+		void pop();
+		void showTop();
+		void displayStack();
+		void stackManipulation();
+};
+//function to check if stack is empty
+bool STACK::isEmpty() {
+	if (top == -1) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+//function to push element is stack
+void STACK::push(int value) {
+	if (top == SIZE - 1) {
+		cout << "Stack is full!" << endl;
+	}
+	else {
+		top++;
+		stackArray[top] = value;
+	}
+}
+//function to pop element from stack
+void STACK::pop() {
+	if (isEmpty()) {
+		cout << "Stack is empty!" << endl;
+	}
+	else {
+		cout << "Popped " << stackArray[--top] << endl;
+	}
+}
+//function to show top element in stack
+void STACK::showTop() {
+	if (isEmpty()) {
+		cout << "Stack is empty!" << endl;
+	}
+	else {
+		cout << "Element at top is: " << stackArray[top] << endl;
+	}
+}
+//function to display stack
+void STACK::displayStack() {
+	if (isEmpty()) {
+		cout << "Stack is empty!" << endl;
+	}
+	else {
+		cout << "Stack: ";
+		for (int i = 0; i <= top; i++) {
+			cout << stackArray[i] << "  ";
+		}
+		cout << "\n";
+	}
+}
+//function to manipulate STACK
+void STACK::stackManipulation() {
+	int n, value, flag = 1;
+	cout << "--------------------------------------------------------------------------" << endl;
+	cout << "\nStack Manipulation" << endl;
+	while (flag == 1) {
+		cout << "\n--------------------------------------------------------------------------\n";
+		cout << "\n 1.Push \n 2.Pop \n 3.Show Top \n 4.Display Stack \n 5.EXIT" << endl;
+		cout << "--->>  ";
+		cin >> n;
+		cout << "\n";
+		switch (n) {
+		case 1:
+			cout << "Enter value: ";
+			cin >> value;
+			push(value);
+			break;
+		case 2:
+			pop();
+			break;
+		case 3:
+			showTop();
+			break;
+		case 4:
+			displayStack();
+			break;
+		case 5:
+			flag = 0;
+			break;
+		default:
+			break;
+		}
+	}
+	system("pause");
+}
